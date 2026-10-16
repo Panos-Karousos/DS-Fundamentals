@@ -1,85 +1,46 @@
-#!/usr/bin/env python
-# coding: utf-8
+ #Import pandas
+import pandas as pd
 
-# In[1]:
-
-
-import pandas as pd 
-
-
-# In[3]:
-
-
+# Load the CSV and preview its contents
 df = pd.read_csv("dirty_data_sample.csv")
 df
 
-
-# In[21]:
-
-
+#find duplicated rows
 df.duplicated()
 
-
-# In[5]:
-
-
+#Statistical Summary generation.
 df.describe(include="all")
 
 
-# In[6]:
-
-
+#Number of missing values.
 df.isnull().sum()
 
-
-# In[7]:
-
-
+#Check Data Types.
 df.dtypes
 
-
-# In[8]:
-
-
+#Convert age to numerical:
 df["Age"] = pd.to_numeric(df["Age"], errors="coerce")
 df.dtypes
 
 
-# In[10]:
-
-
+#Fill the missing values with the median:
 df["Age"] = df["Age"].fillna(df["Age"].median())
 df["Income"] = df["Income"].fillna(df["Income"].median())
+
+#Fill the missing values with Uknown:
 df["Name"] = df["Name"].fillna("Unknown")
 df["City"] = df["City"].fillna("Unknown")
 df = df.drop_duplicates()
 
 
-# In[11]:
-
 
 df
 
-
-# In[12]:
-
-
+#Check that there are no missing values and no duplicated rows:
 df.isnull().sum()
-
-
-# In[13]:
-
-
 df.dtypes
-
-
-# In[14]:
-
-
 df.duplicated().sum()
 
-
-# In[15]:
 
 
 df.info()
