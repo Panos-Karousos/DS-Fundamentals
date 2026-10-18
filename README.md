@@ -1,2 +1,4 @@
-# DS-Fundamentals - Week 1 and Week 2 
+# Data Science Fundamentals - Weeks 1 and 2
+
 Collaborative course content
+
